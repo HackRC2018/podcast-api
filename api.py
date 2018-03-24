@@ -27,7 +27,7 @@ db = mongo_client[MONGODB_DB]
 
 @app.route('/users/tags', methods=['POST'])
 def create_tags():
-    ''' Add tag for the current user '''
+    """ Add tag for the current user """
     data = request.json
     if "tag" in data:
         db.user_tags.insert_one({"label": data["tag"]})
@@ -36,7 +36,7 @@ def create_tags():
 
 @app.route('/users/tags', methods=['GET'])
 def get_users_tags():
-    ''' Get all tags for the current user '''
+    """ Get all tags for the current user """
     tags = [tag for tag in db.user_tags.find()]
     payload = dumps({'tags': tags})
     return Response(response=payload, mimetype="application/json")
@@ -44,16 +44,24 @@ def get_users_tags():
 
 @app.route('/users/tags', methods=['DELETE'])
 def delete_users_tags():
-    ''' Delete all tags for the current user '''
+    """ Delete all tags for the current user """
     db.user_tags.remove()
     return Response(status=201, mimetype="application/json")
 
 
 @app.route('/tags')
 def get_tags():
-    ''' Get all tags '''
+    """ Get all tags """
     tags = [tag for tag in db.tags.find()]
     payload = dumps({'tags': tags})
+    return Response(response=payload, mimetype="application/json")
+
+
+@app.route('/podcasts')
+def get_podcasts():
+    """ Get all tags """
+    podcasts = [podcast for podcast in db.podcasts.find()]
+    payload = dumps({'podcasts': podcasts})
     return Response(response=payload, mimetype="application/json")
 
 
