@@ -2,6 +2,10 @@
 ```
 python3 -m venv .env && source .env/bin/activate
 pip install -r requirements.txt
+
+MONGODB_HOST=localhost
+MONGODB_PORT=27017
+MONGODB_DB=podcast
 ```
 
 # Docker
