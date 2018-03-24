@@ -24,3 +24,13 @@ docker run -d \
     -e 'MONGODB_HOST=mongo' \
     podcast-api
 ```
+
+# Push and Pull image
+```
+# Push to Docker Hub
+docker tag podcast-api william57m/podcast-api
+docker push william57m/podcast-api
+
+# Pull in Azure
+docker pull william57m/podcast-api
+```
