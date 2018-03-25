@@ -95,9 +95,10 @@ def get_podcasts():
     podcast_to_return = []
     for podcast in podcasts:
         tag_ok = False
-        for tag in podcast['tags']:
-            if tag in users_tags:
-                tag_ok = True
+        if 'tags' in podcast:
+            for tag in podcast['tags']:
+                if tag in users_tags:
+                    tag_ok = True
         if tag_ok:
             podcast_to_return.append(podcast)
 
