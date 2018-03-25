@@ -11,7 +11,7 @@ MONGODB_DB=podcast
 # Docker
 ```
 # building
-docker build -t podcast-api .
+docker build -t william57m/podcast-api .
 
 # start mongo
 docker run -p 27017:27017 --name podcast-mongo -d mongo

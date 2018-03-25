@@ -82,8 +82,8 @@ def delete_podcasts():
     return Response(response=payload, status=204, mimetype="application/json")
 
 
-@app.route('/podcasts')
-def get_podcasts():
+@app.route('/users/podcasts')
+def get_users_podcasts():
     """ Get all podcasts """
     podcasts = db.podcasts.find()
 
@@ -103,6 +103,15 @@ def get_podcasts():
             podcast_to_return.append(podcast)
 
     payload = dumps({'podcasts': podcast_to_return})
+    return Response(response=payload, mimetype="application/json")
+
+
+@app.route('/podcasts')
+def get_podcasts():
+    """ Get all podcasts """
+    podcasts = db.podcasts.find()
+
+    payload = dumps({'podcasts': podcasts})
     return Response(response=payload, mimetype="application/json")
 
 
