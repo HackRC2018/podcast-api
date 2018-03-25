@@ -14,7 +14,7 @@ MONGODB_DB=podcast
 docker build -t podcast-api .
 
 # start mongo
-docker run --name podcast-mongo -d mongo
+docker run -p 27017:27017 --name podcast-mongo -d mongo
 
 # run api
 docker run -d \
@@ -22,7 +22,7 @@ docker run -d \
     --name podcast-api \
     --link podcast-mongo:mongo \
     -e 'MONGODB_HOST=mongo' \
-    podcast-api
+    william57m/podcast-api
 ```
 
 # Push and Pull image
